@@ -8,6 +8,24 @@ const registerUser = async (req, res) => {
     const { userType, name, email, phone, vehicleNumber, hospitalName, licenseNumber, password } = req.body;
 
     try {
+        // Validations
+        if (!name || name.length < 3) {
+            return res.status(400).json({ message: 'Name must be at least 3 characters long' });
+        }
+
+        const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!email || !emailRegex.test(email)) {
+            return res.status(400).json({ message: 'Please provide a valid email address' });
+        }
+
+        if (!password || password.length < 6) {
+            return res.status(400).json({ message: 'Password must be at least 6 characters long' });
+        }
+
+        if (!vehicleNumber || vehicleNumber.length < 5) {
+            return res.status(400).json({ message: 'Please provide a valid vehicle number' });
+        }
+
         const userExists = await User.findOne({ email });
 
         if (userExists) {

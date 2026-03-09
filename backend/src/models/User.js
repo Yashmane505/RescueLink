@@ -10,20 +10,24 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        minlength: [3, 'Name must be at least 3 characters long']
     },
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
     phone: {
         type: String,
-        required: true
+        required: true,
+        match: [/^\d{10}$/, 'Please fill a valid 10-digit phone number']
     },
     vehicleNumber: {
         type: String,
-        required: true
+        required: true,
+        minlength: [5, 'Vehicle number must be at least 5 characters long']
     },
     hospitalName: {
         type: String,
@@ -35,7 +39,8 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        minlength: [6, 'Password must be at least 6 characters long']
     }
 }, {
     timestamps: true

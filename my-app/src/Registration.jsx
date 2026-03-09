@@ -32,12 +32,40 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
+    // Validations
+    if (formData.name.trim().length < 3) {
+      setError("Name must be at least 3 characters long");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      setError("Please enter a valid 10-digit phone number");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+
+    if (formData.vehicleNumber.trim().length < 5) {
+      setError("Please enter a valid vehicle number (at least 5 characters)");
+      return;
+    }
+
     try {
       await register({ userType, ...formData });
       alert(`Registration successful for ${userType}!`);
       navigate("/");
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "Registration failed");
     }
   };
 
