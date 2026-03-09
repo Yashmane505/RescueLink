@@ -1,10 +1,18 @@
 {
     "version": 2,
-    "functions": {
-        "backend/server.js": {
-            "runtime": "nodejs18.x"
+    "builds": [
+        {
+            "src": "backend/server.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "my-app/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
         }
-    },
+    ],
     "rewrites": [
         {
             "source": "/api/(.*)",
