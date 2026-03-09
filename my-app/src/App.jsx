@@ -11,6 +11,8 @@ import Footer from "./Footer";
 import Registration from "./Registration";
 import Login from "./Login";
 import Device from "./Device";
+import DeviceDetails from "./DeviceDetails";
+import Checkout from "./Checkout";
 import Demo from "./Demo";
 import Technology from "./Technology";
 import StatisticsPage from "./StatisticsPage";
@@ -47,6 +49,8 @@ function App() {
             <Route path="/register" element={<Registration />} />
             <Route path="/login" element={<Login />} />
             <Route path="/device" element={<Device />} />
+            <Route path="/device/:id" element={<DeviceDetails />} />
+            <Route path="/buy/:id" element={<Checkout />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/technology" element={<Technology />} />
             <Route path="/statistics" element={<StatisticsPage />} />

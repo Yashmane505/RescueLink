@@ -70,6 +70,7 @@ const Device = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
+                id: "go",
                 name: "RescueLink Go",
                 icon: "📱",
                 desc: "Portable siren detector for shared mobility and rental cars. No installation required.",
@@ -77,6 +78,7 @@ const Device = () => {
                 tag: "Bestseller"
               },
               {
+                id: "moto",
                 name: "RescueLink Moto",
                 icon: "🏍️",
                 desc: "Ultra-rugged, IP68 waterproof design specifically for motorcycles and first responders.",
@@ -84,6 +86,7 @@ const Device = () => {
                 tag: "New Release"
               },
               {
+                id: "pro",
                 name: "Fleet Hub Pro",
                 icon: "🛰️",
                 desc: "Institutional gateway that syncs up to 50 vehicles via a single high-range antenna.",
@@ -91,7 +94,11 @@ const Device = () => {
                 tag: "Enterprise"
               }
             ].map((device, idx) => (
-              <div key={idx} className="group bg-white p-8 rounded-[3rem] border border-slate-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2">
+              <div
+                key={idx}
+                onClick={() => navigate(`/device/${device.id}`)}
+                className="group bg-white p-8 rounded-[3rem] border border-slate-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 cursor-pointer"
+              >
                 <div className="mb-6 flex justify-between items-start">
                   <div className="text-5xl group-hover:scale-110 transition-transform duration-300 bg-slate-50 w-20 h-20 rounded-3xl flex items-center justify-center border border-slate-50">
                     {device.icon}
@@ -104,7 +111,7 @@ const Device = () => {
                 <p className="text-slate-500 text-sm leading-relaxed mb-8">{device.desc}</p>
                 <div className="flex items-center justify-between mt-auto">
                   <span className="text-2xl font-black text-slate-900">{device.price}</span>
-                  <button className="text-xs font-black text-primary uppercase tracking-widest hover:underline">Order Now →</button>
+                  <button className="text-xs font-black text-primary uppercase tracking-widest hover:underline">Learn More →</button>
                 </div>
               </div>
             ))}
