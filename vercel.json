@@ -6,18 +6,17 @@
             "use": "@vercel/node"
         },
         {
-            "src": "my-app/package.json",
+            "src": "package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "dist",
-                "buildCommand": "npm run build"
+                "distDir": "my-app/dist"
             }
         }
     ],
     "rewrites": [
         {
             "source": "/api/(.*)",
-            "destination": "api/index.js"
+            "destination": "/api/index.js"
         },
         {
             "source": "/(.*)",
