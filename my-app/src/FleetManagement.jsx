@@ -86,7 +86,7 @@ const FleetManagement = () => {
                     <div className="h-64 bg-slate-900 rounded-[4rem] flex items-center justify-center shadow-2xl relative overflow-hidden text-center p-8 transition-transform group hover:scale-[1.02]">
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent opacity-50"></div>
                         <div className="relative z-10 px-8">
-                            <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] mb-4">Request Quote</p>
+                            <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] mb-4">Enterprise Access</p>
                             <h4 className="text-white text-3xl font-black mb-2">Partner with RescueLink Pro</h4>
                         </div>
                     </div>

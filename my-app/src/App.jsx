@@ -22,6 +22,7 @@ import CloudNetwork from "./CloudNetwork";
 import FleetManagement from "./FleetManagement";
 import Training from "./Training";
 import Pricing from "./Pricing";
+import CaseStudies from "./CaseStudies";
 
 const HomePage = () => (
   <>
@@ -49,6 +50,7 @@ function App() {
             <Route path="/demo" element={<Demo />} />
             <Route path="/technology" element={<Technology />} />
             <Route path="/statistics" element={<StatisticsPage />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/safety" element={<SafetyPage />} />
             <Route path="/search" element={<SearchResults />} />
             <Route path="/dashboard" element={<Dashboard />} />

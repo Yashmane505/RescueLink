@@ -47,7 +47,7 @@ const Pricing = () => {
                 "On-site Installation",
                 "Dedicated Account Manager"
             ],
-            button: "Request Quote",
+            button: "Contact Sales",
             popular: false
         }
     ];
@@ -70,8 +70,8 @@ const Pricing = () => {
                         <div
                             key={idx}
                             className={`relative bg-white p-12 rounded-[4rem] border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${plan.popular
-                                    ? "border-primary shadow-2xl shadow-primary/10 ring-4 ring-primary/5"
-                                    : "border-slate-100 shadow-xl"
+                                ? "border-primary shadow-2xl shadow-primary/10 ring-4 ring-primary/5"
+                                : "border-slate-100 shadow-xl"
                                 }`}
                         >
                             {plan.popular && (
@@ -102,8 +102,8 @@ const Pricing = () => {
                             <button
                                 onClick={() => navigate("/register")}
                                 className={`w-full py-5 rounded-[2.5rem] font-black text-lg transition-all ${plan.popular
-                                        ? "bg-primary text-white shadow-xl shadow-primary/30 hover:bg-primary-dark"
-                                        : "bg-slate-900 text-white shadow-xl shadow-slate-900/20 hover:bg-slate-800"
+                                    ? "bg-primary text-white shadow-xl shadow-primary/30 hover:bg-primary-dark"
+                                    : "bg-slate-900 text-white shadow-xl shadow-slate-900/20 hover:bg-slate-800"
                                     }`}
                             >
                                 {plan.button}
