@@ -6,7 +6,7 @@
     "backend"
   ],
   "scripts": {
-    "build": "npm install --workspace=my-app && npm run build --workspace=my-app",
+    "build": "npm run build --workspace=my-app",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd my-app && npm run dev\"",
     "install-all": "npm install && cd backend && npm install && cd ../my-app && npm install"
   },
