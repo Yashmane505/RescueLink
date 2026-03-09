@@ -2,6 +2,10 @@
   "name": "rescue-link-root",
   "private": true,
   "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd my-app && npm run dev\"",
     "install-all": "npm install && cd backend && npm install && cd ../my-app && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
