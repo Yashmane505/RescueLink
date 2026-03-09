@@ -141,7 +141,7 @@ const Navbar = () => {
                     filteredSuggestions.map((item, idx) => (
                       <div
                         key={idx}
-                        onClick={() => { navigate(item.path); setSearch(""); setSearchFocused(false); }}
+                        onMouseDown={(e) => { e.preventDefault(); navigate(item.path); setSearch(""); setSearchFocused(false); }}
                         className="px-4 py-3 hover:bg-slate-50 cursor-pointer transition-colors border-b border-slate-50 last:border-0"
                       >
                         <p className="text-sm font-bold text-slate-900">{item.name}</p>
@@ -240,7 +240,7 @@ const Navbar = () => {
                     filteredSuggestions.map((item, idx) => (
                       <div
                         key={idx}
-                        onClick={() => { navigate(item.path); setSearch(""); setSearchFocused(false); setIsMobileMenuOpen(false); }}
+                        onMouseDown={(e) => { e.preventDefault(); navigate(item.path); setSearch(""); setSearchFocused(false); setIsMobileMenuOpen(false); }}
                         className="px-4 py-3 hover:bg-slate-50 cursor-pointer transition-colors border-b border-slate-50 last:border-0"
                       >
                         <p className="text-sm font-bold text-slate-900">{item.name}</p>

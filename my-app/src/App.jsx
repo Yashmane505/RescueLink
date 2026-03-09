@@ -26,6 +26,8 @@ import FleetManagement from "./FleetManagement";
 import Training from "./Training";
 import Pricing from "./Pricing";
 import CaseStudies from "./CaseStudies";
+import AboutUs from "./AboutUs";
+import LegalPage from "./LegalPage";
 
 const HomePage = () => (
   <>
@@ -64,6 +66,8 @@ function App() {
             <Route path="/safety/fleet" element={<FleetManagement />} />
             <Route path="/safety/training" element={<Training />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/legal/:doc" element={<LegalPage />} />
           </Routes>
         </main>
         <Footer />
@@ -71,5 +75,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;

@@ -32,8 +32,8 @@ const Footer = () => {
             <h4 className="text-white font-bold mb-6">Company</h4>
             <ul className="space-y-4 text-sm text-slate-400">
               <li><Link to="/statistics" className="hover:text-primary transition-colors">Impact & Stats</Link></li>
-              <li className="hover:text-primary cursor-pointer transition-colors">Testimonials</li>
-              <li className="hover:text-primary cursor-pointer transition-colors">About Us</li>
+              <li><Link to="/case-studies" className="hover:text-primary transition-colors">Testimonials</Link></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
               <li><Link to="/register" className="hover:text-primary transition-colors">Register</Link></li>
             </ul>
           </div>
@@ -56,9 +56,9 @@ const Footer = () => {
             © {new Date().getFullYear()} RescueLink Technologies. All rights reserved.
           </p>
           <div className="flex gap-6 text-slate-500 text-xs">
-            <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-            <span className="hover:text-white cursor-pointer transition-colors">Terms of Service</span>
-            <span className="hover:text-white cursor-pointer transition-colors">Cookie Policy</span>
+            <Link to="/legal/privacy" className="hover:text-white cursor-pointer transition-colors">Privacy Policy</Link>
+            <Link to="/legal/terms" className="hover:text-white cursor-pointer transition-colors">Terms of Service</Link>
+            <Link to="/legal/cookies" className="hover:text-white cursor-pointer transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
