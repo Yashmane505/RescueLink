@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 const Footer = () => {
+  const { user } = useAuth();
+
   return (
     <footer className="bg-slate-900 border-t border-slate-800 pt-20 pb-10 px-6">
       <div className="max-w-7xl mx-auto">
@@ -24,7 +27,7 @@ const Footer = () => {
               <li><Link to="/technology" className="hover:text-primary transition-colors">Technology</Link></li>
               <li><Link to="/device" className="hover:text-primary transition-colors">The Clip Device</Link></li>
               <li><Link to="/demo" className="hover:text-primary transition-colors">Watch Demo</Link></li>
-              <li><Link to="/register" className="hover:text-primary transition-colors">Join Now</Link></li>
+              {!user && <li><Link to="/register" className="hover:text-primary transition-colors">Join Now</Link></li>}
             </ul>
           </div>
 
@@ -34,7 +37,7 @@ const Footer = () => {
               <li><Link to="/statistics" className="hover:text-primary transition-colors">Impact & Stats</Link></li>
               <li><Link to="/case-studies" className="hover:text-primary transition-colors">Testimonials</Link></li>
               <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link to="/register" className="hover:text-primary transition-colors">Register</Link></li>
+              {!user && <li><Link to="/register" className="hover:text-primary transition-colors">Register</Link></li>}
             </ul>
           </div>
 
@@ -43,7 +46,11 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-slate-400">
               <li><Link to="/safety" className="hover:text-primary transition-colors">Safety Guides</Link></li>
               <li><Link to="/device" className="hover:text-primary transition-colors">Device Setup</Link></li>
-              <li><Link to="/login" className="hover:text-primary transition-colors">User Login</Link></li>
+              {!user ? (
+                <li><Link to="/login" className="hover:text-primary transition-colors">User Login</Link></li>
+              ) : (
+                <li><Link to="/dashboard" className="hover:text-primary transition-colors">My Dashboard</Link></li>
+              )}
               <li className="text-primary font-bold">
                 <a href="tel:102" className="hover:underline">102</a> | <a href="tel:108" className="hover:underline">108</a>
               </li>
