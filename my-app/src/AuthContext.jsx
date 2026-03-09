@@ -11,7 +11,18 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
         if (storedUser) {
-            setUser(JSON.parse(storedUser));
+            try {
+                const parsed = JSON.parse(storedUser);
+                if (parsed && typeof parsed === 'object') {
+                    setUser(parsed);
+                } else {
+                    // It's a string, which we don't want
+                    localStorage.removeItem("user");
+                }
+            } catch (error) {
+                console.error("Auth initialization failed:", error);
+                localStorage.removeItem("user"); // Clear corrupted data
+            }
         }
         setLoading(false);
     }, []);
