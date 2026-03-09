@@ -5,7 +5,10 @@ import { useAuth } from "./AuthContext";
 const devices = {
     "go": { name: "RescueLink Go", price: 29 },
     "moto": { name: "RescueLink Moto", price: 39 },
-    "pro": { name: "Fleet Hub Pro", price: 199 }
+    "pro": { name: "Fleet Hub Pro", price: 199 },
+    "personal": { name: "Personal Plan (Annual)", price: 9 },
+    "fleet": { name: "Fleet Pro Plan (Monthly)", price: 99 },
+    "emergency": { name: "Emergency Response (Annual)", price: 999 }
 };
 
 const Checkout = () => {

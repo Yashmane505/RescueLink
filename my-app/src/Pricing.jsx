@@ -6,6 +6,7 @@ const Pricing = () => {
 
     const plans = [
         {
+            id: "personal",
             name: "Personal",
             price: "$9",
             period: "per device",
@@ -21,6 +22,7 @@ const Pricing = () => {
             popular: false
         },
         {
+            id: "fleet",
             name: "Fleet Pro",
             price: "$99",
             period: "per device / month",
@@ -32,10 +34,11 @@ const Pricing = () => {
                 "Telematics API Access",
                 "Detailed Analytics Reports"
             ],
-            button: "Contact Sales",
+            button: "Buy Now",
             popular: true
         },
         {
+            id: "emergency",
             name: "Emergency",
             price: "$999",
             period: "institutional rate",
@@ -47,7 +50,7 @@ const Pricing = () => {
                 "On-site Installation",
                 "Dedicated Account Manager"
             ],
-            button: "Contact Sales",
+            button: "Buy Now",
             popular: false
         }
     ];
@@ -100,7 +103,7 @@ const Pricing = () => {
                             </ul>
 
                             <button
-                                onClick={() => navigate("/register")}
+                                onClick={() => navigate(`/buy/${plan.id}`)}
                                 className={`w-full py-5 rounded-[2.5rem] font-black text-lg transition-all ${plan.popular
                                     ? "bg-primary text-white shadow-xl shadow-primary/30 hover:bg-primary-dark"
                                     : "bg-slate-900 text-white shadow-xl shadow-slate-900/20 hover:bg-slate-800"
