@@ -1,8 +1,12 @@
 {
   "name": "rescue-link-root",
   "private": true,
+  "workspaces": [
+    "my-app",
+    "backend"
+  ],
   "scripts": {
-    "build": "cd my-app && npm run build",
+    "build": "npm install --workspace=my-app && npm run build --workspace=my-app",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd my-app && npm run dev\"",
     "install-all": "npm install && cd backend && npm install && cd ../my-app && npm install"
   },
