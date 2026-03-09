@@ -2,6 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
+const allSearchableItems = [
+  { name: "RescueLink Go", type: "Device", path: "/device/go" },
+  { name: "RescueLink Moto", type: "Device", path: "/device/moto" },
+  { name: "Fleet Hub Pro", type: "Device", path: "/device/pro" },
+  { name: "Personal Plan", type: "Plan", path: "/buy/personal" },
+  { name: "Fleet Pro Plan", type: "Plan", path: "/buy/fleet" },
+  { name: "Emergency Response Plan", type: "Plan", path: "/buy/emergency" },
+  { name: "Detection Engine", type: "Technology", path: "/technology" },
+  { name: "Cloud Network", type: "Technology", path: "/technology/cloud" },
+  { name: "Our Impact", type: "Statistics", path: "/statistics" },
+  { name: "Case Studies", type: "Statistics", path: "/case-studies" },
+  { name: "Driver Protocol", type: "Safety", path: "/safety" },
+  { name: "Emergency Fleet", type: "Safety", path: "/safety/fleet" },
+  { name: "Training", type: "Safety", path: "/safety/training" },
+  { name: "My Orders", type: "Account", path: "/my-orders" },
+  { name: "Plans & Pricing", type: "Solutions", path: "/pricing" }
+];
+
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -10,13 +28,24 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileSubmenu, setActiveMobileSubmenu] = useState(null);
+  const [searchFocused, setSearchFocused] = useState(false);
+
+  const filteredSuggestions = allSearchableItems
+    .filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    .slice(0, 5);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (search.trim()) {
+    if (!search.trim()) return;
+
+    const exactMatch = allSearchableItems.find(item => item.name.toLowerCase() === search.toLowerCase());
+    if (exactMatch) {
+      navigate(exactMatch.path);
+    } else {
       navigate(`/search?q=${encodeURIComponent(search)}`);
-      setSearch("");
     }
+    setSearch("");
+    setSearchFocused(false);
   };
 
   useEffect(() => {
@@ -88,12 +117,14 @@ const Navbar = () => {
           </ul>
 
           {/* Actions */}
-          <div className="flex items-center gap-2 lg:gap-4">
-            <form onSubmit={handleSearch} className="hidden lg:flex items-center bg-slate-100/80 rounded-full px-4 py-1.5 border border-slate-200 focus-within:ring-2 ring-primary/20 transition-all">
+          <div className="flex items-center gap-2 lg:gap-4 relative">
+            <form onSubmit={handleSearch} className="hidden lg:flex relative items-center bg-slate-100/80 rounded-full px-4 py-1.5 border border-slate-200 focus-within:ring-2 ring-primary/20 transition-all">
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
                 placeholder="Search tech..."
                 className="bg-transparent text-sm border-none outline-none w-24 focus:w-40 transition-all duration-300 text-slate-700 font-bold"
               />
@@ -102,6 +133,26 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </button>
+
+              {/* Suggestions Dropdown */}
+              {searchFocused && search.trim() !== "" && (
+                <div className="absolute top-full right-0 mt-3 w-64 bg-white border border-slate-100 rounded-2xl shadow-2xl overflow-hidden py-2 z-[100]">
+                  {filteredSuggestions.length > 0 ? (
+                    filteredSuggestions.map((item, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => { navigate(item.path); setSearch(""); setSearchFocused(false); }}
+                        className="px-4 py-3 hover:bg-slate-50 cursor-pointer transition-colors border-b border-slate-50 last:border-0"
+                      >
+                        <p className="text-sm font-bold text-slate-900">{item.name}</p>
+                        <p className="text-[10px] uppercase font-bold text-primary tracking-widest">{item.type}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="px-4 py-3 text-xs text-slate-500 font-bold text-center">No results found</div>
+                  )}
+                </div>
+              )}
             </form>
 
             <div className="hidden sm:flex items-center gap-2 lg:gap-4">
@@ -164,13 +215,15 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div className={`lg:hidden absolute top-full left-0 right-0 glass border-t border-slate-100 overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? "max-h-screen opacity-100 pointer-events-auto" : "max-h-0 opacity-0 pointer-events-none"
           }`}>
-          <div className="p-6 space-y-4 bg-white/50 backdrop-blur-xl">
+          <div className="p-6 space-y-4 bg-white/50 backdrop-blur-xl h-full overflow-y-auto">
             {/* Mobile Search */}
-            <form onSubmit={handleSearch} className="flex items-center bg-white rounded-2xl px-4 py-3 border border-slate-200">
+            <form onSubmit={handleSearch} className="relative flex items-center bg-white rounded-2xl px-4 py-3 border border-slate-200">
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
                 placeholder="Search..."
                 className="bg-transparent text-sm border-none outline-none flex-1 font-bold"
               />
@@ -179,6 +232,26 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </button>
+
+              {/* Mobile Suggestions */}
+              {searchFocused && search.trim() !== "" && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-100 rounded-2xl shadow-xl overflow-hidden py-2 z-50">
+                  {filteredSuggestions.length > 0 ? (
+                    filteredSuggestions.map((item, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => { navigate(item.path); setSearch(""); setSearchFocused(false); setIsMobileMenuOpen(false); }}
+                        className="px-4 py-3 hover:bg-slate-50 cursor-pointer transition-colors border-b border-slate-50 last:border-0"
+                      >
+                        <p className="text-sm font-bold text-slate-900">{item.name}</p>
+                        <p className="text-[10px] uppercase font-bold text-primary tracking-widest">{item.type}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="px-4 py-3 text-xs text-slate-500 font-bold text-center">No results found</div>
+                  )}
+                </div>
+              )}
             </form>
 
             <div className="space-y-1">
