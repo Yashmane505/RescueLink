@@ -13,6 +13,7 @@ import Login from "./Login";
 import Device from "./Device";
 import DeviceDetails from "./DeviceDetails";
 import Checkout from "./Checkout";
+import MyOrders from "./MyOrders";
 import Demo from "./Demo";
 import Technology from "./Technology";
 import StatisticsPage from "./StatisticsPage";
@@ -51,6 +52,7 @@ function App() {
             <Route path="/device" element={<Device />} />
             <Route path="/device/:id" element={<DeviceDetails />} />
             <Route path="/buy/:id" element={<Checkout />} />
+            <Route path="/my-orders" element={<MyOrders />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/technology" element={<Technology />} />
             <Route path="/statistics" element={<StatisticsPage />} />

@@ -45,6 +45,7 @@ const Navbar = () => {
     Solutions: [
       { name: "Hardware Lineup", desc: "Explore our full range of devices", icon: "📟", path: "/device" },
       { name: "Fleet Solutions", desc: "Enterprise-grade hardware bundles", icon: "🚚", path: "/safety/fleet" },
+      { name: "My Orders", desc: "Track your device deliveries", icon: "📦", path: "/my-orders" },
       { name: "Plans & Pricing", desc: "Choose the best protection package", icon: "💎", path: "/pricing" },
     ]
   };
@@ -105,7 +106,11 @@ const Navbar = () => {
 
             <div className="hidden sm:flex items-center gap-2 lg:gap-4">
               {user ? (
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 lg:gap-4">
+                  <Link to="/my-orders" className="hidden md:flex items-center gap-2 text-slate-500 hover:text-primary transition-colors px-2">
+                    <span className="text-lg">📦</span>
+                    <span className="text-xs font-bold uppercase tracking-widest">Orders</span>
+                  </Link>
                   <Link to="/dashboard" className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-2xl border border-slate-200 shadow-sm hover:bg-slate-200 transition-colors group">
                     <div className="w-6 h-6 bg-primary text-white text-[10px] rounded-full flex items-center justify-center font-black group-hover:scale-110 transition-transform">
                       {user.name.charAt(0).toUpperCase()}
@@ -222,18 +227,24 @@ const Navbar = () => {
                       <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{user.userType}</p>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
                     <button
                       onClick={() => { navigate("/dashboard"); setIsMobileMenuOpen(false); }}
-                      className="py-3 px-4 rounded-xl bg-slate-900 text-white text-xs font-black uppercase tracking-widest"
+                      className="py-3 px-4 rounded-xl bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2"
                     >
-                      Dashboard
+                      <span>📊</span> Dashboard
+                    </button>
+                    <button
+                      onClick={() => { navigate("/my-orders"); setIsMobileMenuOpen(false); }}
+                      className="py-3 px-4 rounded-xl bg-slate-100 text-slate-900 text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2"
+                    >
+                      <span>📦</span> My Orders
                     </button>
                     <button
                       onClick={() => { logout(); setIsMobileMenuOpen(false); }}
-                      className="py-3 px-4 rounded-xl bg-slate-100 text-red-500 text-xs font-black uppercase tracking-widest"
+                      className="py-3 px-4 rounded-xl bg-slate-100 text-red-500 text-[10px] font-black uppercase tracking-widest sm:col-span-2 flex items-center justify-center gap-2"
                     >
-                      Logout
+                      <span>🚪</span> Logout
                     </button>
                   </div>
                 </div>
