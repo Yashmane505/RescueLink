@@ -20,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/auth', authRoutes);
+const orderRoutes = require('../backend/src/routes/orderRoutes');
+app.use('/api/orders', orderRoutes);
 
 // Simple route to check server
 app.get('/api', (req, res) => {
