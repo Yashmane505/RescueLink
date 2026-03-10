@@ -22,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 const orderRoutes = require('./src/routes/orderRoutes');
 app.use('/api/orders', orderRoutes);
+const adminRoutes = require('./src/routes/adminRoutes');
+app.use('/api/admin', adminRoutes);
 
 // Simple route to check server
 app.get('/', (req, res) => {

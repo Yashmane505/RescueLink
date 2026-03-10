@@ -21,6 +21,7 @@ import SafetyPage from "./SafetyPage";
 import SearchResults from "./SearchResults";
 import ScrollToTop from "./ScrollToTop";
 import Dashboard from "./Dashboard";
+import AdminPage from "./AdminPage";
 import CloudNetwork from "./CloudNetwork";
 import FleetManagement from "./FleetManagement";
 import Training from "./Training";
@@ -62,6 +63,7 @@ function App() {
             <Route path="/safety" element={<SafetyPage />} />
             <Route path="/search" element={<SearchResults />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route path="/technology/cloud" element={<CloudNetwork />} />
             <Route path="/safety/fleet" element={<FleetManagement />} />
             <Route path="/safety/training" element={<Training />} />

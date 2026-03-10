@@ -162,6 +162,14 @@ const Navbar = () => {
                     <span className="text-lg">📦</span>
                     <span className="text-xs font-bold uppercase tracking-widest">Orders</span>
                   </Link>
+                  {user.email === "yashmane6417@gmail.com" && (
+                    <Link
+                      to="/admin"
+                      className="hidden md:flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20"
+                    >
+                      🛡️ Admin
+                    </Link>
+                  )}
                   <Link to="/dashboard" className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-2xl border border-slate-200 shadow-sm hover:bg-slate-200 transition-colors group">
                     <div className="w-6 h-6 bg-primary text-white text-[10px] rounded-full flex items-center justify-center font-black group-hover:scale-110 transition-transform">
                       {user.name.charAt(0).toUpperCase()}
@@ -313,6 +321,14 @@ const Navbar = () => {
                     >
                       <span>📦</span> My Orders
                     </button>
+                    {user.email === "yashmane6417@gmail.com" && (
+                      <button
+                        onClick={() => { navigate("/admin"); setIsMobileMenuOpen(false); }}
+                        className="py-3 px-4 rounded-xl bg-red-600 text-white text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 sm:col-span-2"
+                      >
+                        <span>🛡️</span> Admin Panel
+                      </button>
+                    )}
                     <button
                       onClick={() => { logout(); setIsMobileMenuOpen(false); }}
                       className="py-3 px-4 rounded-xl bg-slate-100 text-red-500 text-[10px] font-black uppercase tracking-widest sm:col-span-2 flex items-center justify-center gap-2"
