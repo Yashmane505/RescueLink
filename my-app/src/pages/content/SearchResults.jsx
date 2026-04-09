@@ -14,7 +14,7 @@ const SearchResults = () => {
         <div className="space-y-8">
            {[
              { title: "RescueLink Pro Clip v2", type: "Product", path: "/device", desc: "Our latest generation siren detection hardware." },
-             { title: "Live Simulation", type: "Demo", path: "/", desc: "Try the sirens detection simulation on the homepage." },
+
              { title: "Registration Protocols", type: "Safety", path: "/safety", desc: "Official guides on how to react to alerts." },
              { title: "Deep Learning in Acoustics", type: "Technology", path: "/technology", desc: "How our AI identifies emergency sirens." }
            ].filter(item => item.title.toLowerCase().includes(query?.toLowerCase() || "")).map((item, i) => (

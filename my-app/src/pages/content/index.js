@@ -1,0 +1,11 @@
+export { default as AboutUs } from './AboutUs';
+export { default as CaseStudies } from './CaseStudies';
+export { default as CloudNetwork } from './CloudNetwork';
+export { default as FleetManagement } from './FleetManagement';
+export { default as Pricing } from './Pricing';
+export { default as SafetyPage } from './SafetyPage';
+export { default as StatisticsPage } from './StatisticsPage';
+export { default as Technology } from './Technology';
+export { default as Training } from './Training';
+export { default as LegalPage } from './LegalPage';
+export { default as SearchResults } from './SearchResults';

@@ -1,6 +1,6 @@
 import React from "react";
-import Stats from "./Stats";
-import LiveMap from "./LiveMap";
+import Stats from "../../components/home/Stats";
+import LiveMap from "../../components/map/LiveMap";
 
 const StatisticsPage = () => {
   return (

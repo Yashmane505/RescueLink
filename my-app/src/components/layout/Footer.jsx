@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 const Footer = () => {
   const { user } = useAuth();
@@ -26,7 +26,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-slate-400">
               <li><Link to="/technology" className="hover:text-primary transition-colors">Technology</Link></li>
               <li><Link to="/device" className="hover:text-primary transition-colors">The Clip Device</Link></li>
-              <li><Link to="/demo" className="hover:text-primary transition-colors">Watch Demo</Link></li>
+              
               {!user && <li><Link to="/register" className="hover:text-primary transition-colors">Join Now</Link></li>}
             </ul>
           </div>

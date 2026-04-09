@@ -1,6 +1,6 @@
 import React from "react";
-import HowItWorks from "./HowItWorks";
-import Features from "./Features";
+import HowItWorks from "../../components/home/HowItWorks";
+import Features from "../../components/home/Features";
 
 const Technology = () => {
   return (

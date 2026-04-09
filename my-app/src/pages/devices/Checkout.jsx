@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 const devices = {
     "go": { name: "RescueLink Go", price: 29 },

@@ -26,42 +26,35 @@ const carIcon = createEmojiIcon('🚗');
 
 // Sample paths in New Delhi area
 const paths = [
-    // Ambulance 1
-    [
-        [28.6139, 77.209], [28.62, 77.22], [28.63, 77.21], [28.64, 77.23]
-    ],
-    // Ambulance 2
-    [
-        [28.60, 77.18], [28.61, 77.19], [28.62, 77.20], [28.63, 77.19]
-    ],
-    // Ambulance 3
-    [
-        [28.64, 77.25], [28.63, 77.24], [28.62, 77.25], [28.61, 77.24]
-    ],
-    // Ambulance 4
-    [
-        [28.58, 77.22], [28.59, 77.21], [28.60, 77.23], [28.61, 77.22]
-    ],
-    // Ambulance 5
-    [
-        [28.65, 77.20], [28.64, 77.19], [28.63, 77.20], [28.62, 77.19]
-    ],
-    // Private Car
-    [
-        [28.625, 77.215], [28.635, 77.225], [28.645, 77.215], [28.655, 77.225]
-    ]
+    // Ambulances (0-4)
+    [[28.6139, 77.209], [28.62, 77.22], [28.63, 77.21], [28.64, 77.23]],
+    [[28.60, 77.18], [28.61, 77.19], [28.62, 77.20], [28.63, 77.19]],
+    [[28.64, 77.25], [28.63, 77.24], [28.62, 77.25], [28.61, 77.24]],
+    [[28.58, 77.22], [28.59, 77.21], [28.60, 77.23], [28.61, 77.22]],
+    [[28.65, 77.20], [28.64, 77.19], [28.63, 77.20], [28.62, 77.19]],
+    // Private Cars (5-14)
+    [[28.625, 77.215], [28.635, 77.225], [28.645, 77.215], [28.655, 77.225]],
+    [[28.61, 77.21], [28.62, 77.20], [28.63, 77.21], [28.62, 77.22]],
+    [[28.64, 77.18], [28.63, 77.17], [28.62, 77.18], [28.63, 77.19]],
+    [[28.59, 77.24], [28.60, 77.25], [28.61, 77.24], [28.60, 77.23]],
+    [[28.62, 77.24], [28.61, 77.23], [28.60, 77.24], [28.61, 77.25]],
+    [[28.66, 77.21], [28.65, 77.22], [28.64, 77.21], [28.65, 77.20]],
+    [[28.57, 77.21], [28.58, 77.20], [28.59, 77.21], [28.58, 77.22]],
+    [[28.60, 77.27], [28.61, 77.28], [28.62, 77.27], [28.61, 77.26]],
+    [[28.63, 77.15], [28.64, 77.14], [28.65, 77.15], [28.64, 77.16]],
+    [[28.68, 77.22], [28.67, 77.23], [28.66, 77.22], [28.67, 77.21]]
 ];
 
 const LiveMap = () => {
     const [positions, setPositions] = useState(paths.map(p => p[0]));
-    const progressRefs = useRef(paths.map(() => 0));
+    const progressRefs = useRef(paths.map(() => Math.random())); // Randomize starting progress
 
     useEffect(() => {
         const animate = () => {
             setPositions(prev => {
                 return prev.map((pos, i) => {
                     const path = paths[i];
-                    progressRefs.current[i] += 0.002; // Speed of movement
+                    progressRefs.current[i] += i >= 5 ? 0.001 : 0.002; // Private cars move slower
 
                     if (progressRefs.current[i] >= path.length - 1) {
                         progressRefs.current[i] = 0; // Loop back
@@ -97,21 +90,28 @@ const LiveMap = () => {
 
                 {/* Draw paths (optional, for visualization) */}
                 {paths.map((path, i) => (
-                    <Polyline key={`path-${i}`} positions={path} color={i === 5 ? "#94a3b8" : "#ef4444"} weight={2} opacity={0.2} dashArray="5, 10" />
+                    <Polyline 
+                        key={`path-${i}`} 
+                        positions={path} 
+                        color={i >= 5 ? "#94a3b8" : "#ef4444"} 
+                        weight={2} 
+                        opacity={0.1} 
+                        dashArray="5, 10" 
+                    />
                 ))}
 
                 {positions.map((pos, i) => (
                     <Marker
                         key={`marker-${i}`}
                         position={pos}
-                        icon={i === 5 ? carIcon : ambulanceIcon}
+                        icon={i >= 5 ? carIcon : ambulanceIcon}
                     >
                         <Popup>
                             <div className="font-bold">
-                                {i === 5 ? "Private Vehicle" : `Ambulance RL-${100 + i}`}
+                                {i >= 5 ? `Private Vehicle ${i - 4}` : `Ambulance RL-${100 + i}`}
                             </div>
                             <div className="text-xs text-slate-500">
-                                {i === 5 ? "Receiving Alert..." : "Emergency Status: Active"}
+                                {i >= 5 ? "Receiving Alert..." : "Emergency Status: Active"}
                             </div>
                         </Popup>
                     </Marker>

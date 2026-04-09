@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import localImage from "./assets/a.jpeg";
+// import localImage from "./assets/a.jpg";
 
 const Hero = () => {
   const navigate = useNavigate();
   const images = [
     "https://images.unsplash.com/photo-1587740896339-96a76170508d?auto=format&fit=crop&q=80&w=1200",
     "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200",
-    localImage
+   
   ];
 
   const [current, setCurrent] = useState(0);
@@ -53,12 +53,7 @@ const Hero = () => {
               >
                 Get the Device
               </button>
-              <button
-                onClick={() => navigate("/demo")}
-                className="bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 px-8 py-4 rounded-2xl text-lg font-bold transition-all hover:border-slate-300"
-              >
-                Watch Demo
-              </button>
+
             </div>
 
             <div className="p-1 px-1 bg-slate-100/50 rounded-[2rem] w-fit flex gap-2">

@@ -35,14 +35,9 @@ const Device = () => {
 
             <div className="flex flex-wrap gap-4">
               <button className="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-slate-900/30 hover:-translate-y-1 transition-all">
-                Pre-order Package — $49
+                order Package — $49
               </button>
-              <button
-                onClick={() => navigate("/demo")}
-                className="bg-white border border-slate-200 text-slate-900 px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-50 transition-all"
-              >
-                See Performance
-              </button>
+
             </div>
           </div>
 

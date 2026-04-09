@@ -31,9 +31,7 @@ const FleetManagement = () => {
                                 >
                                     Register Fleet — Get Started
                                 </button>
-                                <button className="bg-white border border-slate-200 text-slate-900 px-10 py-5 rounded-3xl font-black text-lg hover:bg-slate-50 transition-all">
-                                    Watch Demo Video
-                                </button>
+
                             </div>
                         </div>
                         <div className="flex-1 w-full lg:max-w-md">

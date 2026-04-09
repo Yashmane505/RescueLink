@@ -1,5 +1,5 @@
 import React from "react";
-import Safety from "./Safety";
+import Safety from "../../components/home/Safety";
 
 const SafetyPage = () => {
   return (

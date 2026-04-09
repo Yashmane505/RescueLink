@@ -2,6 +2,8 @@
 
 A modern, full-stack web application featuring a robust authentication system built with the MERN (MongoDB, Express, React, Node.js) stack. This project utilizes Tailwind CSS 4 for styling and Vite for a lightning-fast frontend development experience.
 
+
+
 ## 🚀 Features
 
 - **Robust Authentication**: Secure sign-up and login functionality using JSON Web Tokens (JWT) and Bcrypt for password hashing.
